@@ -55,7 +55,22 @@ function shuffle(array) {
     return array;
 }
 
+function clickCards() {
+    $('.deck').click(function(event){
+        if (event.target.tagName === "LI") {
+            const $clickedCard = $(event.target);
+            $clickedCard.addClass("open show")
+        }
+
+       // $(this).toggleClass('open show')
+       // console.log($(this).hasClass('open'))
+    })
+}
+
 displayCards();
+clickCards()
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
