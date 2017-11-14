@@ -4,6 +4,7 @@
 
 let openCards = [];
 let moveCounter = 0;
+let time = 0;
 
 let cards = [
     "fa-diamond",
@@ -96,6 +97,24 @@ function removeStar() {
         });
 }
 
+function startTimer() {
+    var old;
+
+    function getNow() {
+        var now = new Date();
+        var seconds = now.getSeconds();
+
+        if (seconds > old) {
+            time += 1;
+            $(".timer").text(time < 10 ? "0" + time : time);
+        }
+        old = seconds;
+
+        setTimeout(getNow, 500);
+    }
+    getNow();
+}
+
 function openCard(clickedCard) {
     const $clickedCard = $(event.target);
     const isNotOpen = !$clickedCard.hasClass("open show");
@@ -128,3 +147,4 @@ function clickCards() {
 
 displayCards();
 clickCards();
+startTimer();
