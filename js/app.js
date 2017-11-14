@@ -70,9 +70,24 @@ function displayCards() {
 
 function openCard(clickedCard) {
     const $clickedCard = $(event.target);
-    if (!$clickedCard.hasClass("open show") && openCards.length < 2) {
+    if (!$clickedCard.hasClass("open show")) {
         $clickedCard.addClass("open show");
         openCards.push($clickedCard);
+    }
+
+    if (openCards.length === 2) {
+        const firstCard = openCards[0].children().attr("class");
+        const secondCard = openCards[1].children().attr("class");
+
+        if (firstCard === secondCard) {
+            openCards[0].addClass("match");
+            openCards[1].addClass("match");
+        } else {
+            openCards[0].removeClass("open show");
+            openCards[1].removeClass("open show");
+        }
+
+        openCards = [];
     }
 }
 
