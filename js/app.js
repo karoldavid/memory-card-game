@@ -3,6 +3,7 @@
  */
 
 let openCards = [];
+let moveCounter = 0;
 
 let cards = [
     "fa-diamond",
@@ -80,17 +81,20 @@ function hideCards() {
     openCards = [];
 }
 
+function incrementMoveCounter() {
+    moveCounter++;
+    $('.moves').text(moveCounter);
+}
+
 function openCard(clickedCard) {
     const $clickedCard = $(event.target);
     const isNotOpen = !$clickedCard.hasClass("open show");
     if (isNotOpen && openCards.length < 2) {
         $clickedCard.addClass("open show");
         openCards.push($clickedCard);
-
         if (openCards.length === 2) {
             const firstCard = openCards[0].children().attr("class");
             const secondCard = openCards[1].children().attr("class");
-
             if (firstCard === secondCard) {
                 lockCards();
             } else {
@@ -98,6 +102,7 @@ function openCard(clickedCard) {
                     hideCards();
                 }, 500);
             }
+            incrementMoveCounter();
         }
     }
 }
