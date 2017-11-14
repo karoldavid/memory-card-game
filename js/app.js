@@ -2,6 +2,8 @@
  * Create a list that holds all of your cards
  */
 
+let openCards = [];
+
 let cards = [
     "fa-diamond",
     "fa-diamond",
@@ -21,23 +23,6 @@ let cards = [
     "fa-bicycle"
 ];
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-function displayCards() {
-    $(".deck").empty();
-
-    shuffle(cards);
-
-    cards.forEach(function(s) {
-        $(".deck").append('<li class="card"><i class="fa ' + s + '"></i></li>');
-    });
-}
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -55,22 +40,22 @@ function shuffle(array) {
     return array;
 }
 
-function clickCards() {
-    $('.deck').click(function(event){
-        if (event.target.tagName === "LI") {
-            const $clickedCard = $(event.target);
-            $clickedCard.addClass("open show")
-        }
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
 
-       // $(this).toggleClass('open show')
-       // console.log($(this).hasClass('open'))
-    })
+function displayCards() {
+    $(".deck").empty();
+
+    shuffle(cards);
+
+    cards.forEach(function(s) {
+        $(".deck").append('<li class="card"><i class="fa ' + s + '"></i></li>');
+    });
 }
-
-displayCards();
-clickCards()
-
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -82,3 +67,22 @@ clickCards()
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+function openCard(clickedCard) {
+    const $clickedCard = $(event.target);
+    if (!$clickedCard.hasClass("open show") && openCards.length < 2) {
+        $clickedCard.addClass("open show");
+        openCards.push($clickedCard);
+    }
+}
+
+function clickCards() {
+    $(".deck").click(function(event) {
+        if (event.target.tagName === "LI") {
+            openCard(event.target);
+        }
+    });
+}
+
+displayCards();
+clickCards();
