@@ -83,7 +83,17 @@ function hideCards() {
 
 function incrementMoveCounter() {
     moveCounter++;
-    $('.moves').text(moveCounter);
+    $(".moves").text(moveCounter);
+}
+
+function removeStar() {
+    const removeStar = [20, 15, 10];
+    $(".stars")
+        .children()
+        .each(function(index, element) {
+            if (moveCounter === removeStar[index])
+                $(element).addClass("star-rm-color");
+        });
 }
 
 function openCard(clickedCard) {
@@ -103,6 +113,7 @@ function openCard(clickedCard) {
                 }, 500);
             }
             incrementMoveCounter();
+            removeStar();
         }
     }
 }

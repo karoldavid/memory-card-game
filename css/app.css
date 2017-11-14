@@ -109,3 +109,7 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+.star-rm-color {
+    color: lightgray;
+}
