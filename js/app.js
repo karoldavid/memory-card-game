@@ -87,14 +87,28 @@ function incrementMoveCounter() {
     $(".moves").text(moveCounter);
 }
 
+function resetMoves() {
+    $(".moves").text(0);
+}
+
 function removeStar() {
-    const removeStar = [20, 15, 10];
+    const removeStar = [20, 15, 2];
     $(".stars")
         .children()
         .each(function(index, element) {
             if (moveCounter === removeStar[index])
                 $(element).addClass("star-rm-color");
         });
+}
+
+function resetStars() {
+    $(".stars")
+        .children()
+        .removeClass("star-rm-color");
+}
+
+function resetTimer() {
+    $(".timer").text("00");
 }
 
 function startTimer() {
@@ -148,3 +162,13 @@ function clickCards() {
 displayCards();
 clickCards();
 startTimer();
+
+$(".restart").click(function() {
+    openCards = [];
+    moveCounter = 0;
+    time = 0;
+    resetMoves();
+    resetStars();
+    resetTimer();
+    displayCards();
+});
