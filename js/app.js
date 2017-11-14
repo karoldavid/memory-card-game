@@ -68,9 +68,22 @@ function displayCards() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+function lockCards() {
+    openCards[0].addClass("match");
+    openCards[1].addClass("match");
+    openCards = [];
+}
+
+function hideCards() {
+    openCards[0].removeClass("open show");
+    openCards[1].removeClass("open show");
+    openCards = [];
+}
+
 function openCard(clickedCard) {
     const $clickedCard = $(event.target);
-    if (!$clickedCard.hasClass("open show") && openCards.length < 2) {
+    const isNotOpen = !$clickedCard.hasClass("open show");
+    if (isNotOpen && openCards.length < 2) {
         $clickedCard.addClass("open show");
         openCards.push($clickedCard);
 
@@ -79,15 +92,11 @@ function openCard(clickedCard) {
             const secondCard = openCards[1].children().attr("class");
 
             if (firstCard === secondCard) {
-                openCards[0].addClass("match");
-                openCards[1].addClass("match");
-                openCards = [];
+                lockCards();
             } else {
                 setTimeout(function() {
-                    openCards[0].removeClass("open show");
-                    openCards[1].removeClass("open show");
-                    openCards = [];
-                }, 500)
+                    hideCards();
+                }, 500);
             }
         }
     }
