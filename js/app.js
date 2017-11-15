@@ -5,6 +5,8 @@
 let openCards = [];
 let moveCounter = 0;
 let time = 0;
+let matchedCards = 0;
+let timerGo = true;
 
 let cards = [
     "fa-diamond",
@@ -73,7 +75,9 @@ function displayCards() {
 function lockCards() {
     openCards[0].addClass("match");
     openCards[1].addClass("match");
+    matchedCards++;
     openCards = [];
+    if (matchedCards === 1) showModal();
 }
 
 function hideCards() {
@@ -109,24 +113,32 @@ function resetStars() {
 
 function resetTimer() {
     $(".timer").text("00");
+    timerGo = true;
+    startTimer();
 }
 
 function startTimer() {
     var old;
-
     function getNow() {
         var now = new Date();
         var seconds = now.getSeconds();
-
         if (seconds > old) {
             time += 1;
             $(".timer").text(time < 10 ? "0" + time : time);
         }
         old = seconds;
-
-        setTimeout(getNow, 500);
+        if (timerGo) setTimeout(getNow, 500);
     }
     getNow();
+}
+
+function showModal() {
+    const starRating = 3 - $(".stars .star-rm-color").length;
+    timerGo = false;
+    $("#modalLabel").text("You Win!");
+    $("#time").text(time);
+    $("#star-rating").text(starRating);
+    $("#modal").modal("show");
 }
 
 function openCard(clickedCard) {
@@ -159,12 +171,11 @@ function clickCards() {
     });
 }
 
-displayCards();
-clickCards();
-startTimer();
+$("#modal").modal({ show: false });
 
 $(".restart").click(function() {
     openCards = [];
+    matchedCards = 0;
     moveCounter = 0;
     time = 0;
     resetMoves();
@@ -172,3 +183,7 @@ $(".restart").click(function() {
     resetTimer();
     displayCards();
 });
+
+displayCards();
+clickCards();
+startTimer();
