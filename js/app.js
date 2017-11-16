@@ -171,9 +171,7 @@ function clickCards() {
     });
 }
 
-$("#modal").modal({ show: false });
-
-$(".restart").click(function() {
+function restart() {
     openCards = [];
     matchedCards = 0;
     moveCounter = 0;
@@ -182,7 +180,10 @@ $(".restart").click(function() {
     resetStars();
     resetTimer();
     displayCards();
-});
+}
+
+$("#modal").modal({ show: false });
+$(".restart").click(restart);
 
 displayCards();
 clickCards();
