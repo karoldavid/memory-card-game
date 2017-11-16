@@ -77,7 +77,7 @@ function lockCards() {
     openCards[1].addClass("match");
     matchedCards++;
     openCards = [];
-    if (matchedCards === 1) showModal();
+    if (matchedCards === 8) showModal("You Win!");
 }
 
 function hideCards() {
@@ -127,16 +127,17 @@ function startTimer() {
             $(".timer").text(time < 10 ? "0" + time : time);
         }
         old = seconds;
+        if (time > 99) showModal("Time Out!");
         if (timerGo) setTimeout(getNow, 500);
     }
     getNow();
 }
 
-function showModal() {
+function showModal(label) {
     const starRating = 3 - $(".stars .star-rm-color").length;
     timerGo = false;
-    $("#modalLabel").text("You Win!");
-    $("#time").text(time);
+    $("#modalLabel").text(label);
+    $("#time").text(time + " /100");
     $("#star-rating").text(starRating);
     $("#modal").modal("show");
 }
