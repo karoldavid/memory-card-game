@@ -6,7 +6,7 @@ The browser-based card matching game is all about demonstrating mastery of HTML,
 
 Click [here](https://karoldavid.github.io/memory-card-game/) to see a live version.
 
-![Image of Memory Cards Game board](memory-cards-game.png)
+![Image of Memory Cards Game board](img/memory-cards-game.png)
 
 ## Features
 
