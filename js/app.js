@@ -77,7 +77,7 @@ function lockCards() {
     openCards[1].addClass("match");
     matchedCards++;
     openCards = [];
-    if (matchedCards === 1) showModal();
+    if (matchedCards === 8) showModal();
 }
 
 function hideCards() {

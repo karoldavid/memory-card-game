@@ -1,20 +1,42 @@
-# Memory Game Project
+# Memory Cards Game Project
 
-## Table of Contents
+The browser-based card matching game is all about demonstrating mastery of HTML, CSS, and JavaScript.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Live Version
 
-## Instructions
+Click [here](https://karoldavid.github.io/memory-card-game/) to see a live version.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+![Image of Memory Cards Game board](memory-cards-game.png)
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Features
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+1. Star Rating
+2. Move Counter
+3. Game Timer
+4. Reset Button
+5. Two Pop Up Modals (You Win! and Time Out!)
+
+## Getting Started
+
+1. Clone or download the repository.
+2. `cd` into the project directory.
+3. Double click index.html to open the Memory Cards Game in a browser.
+4. Switch branches to see the Vanilla JavaScript and the jQuery version.
+
+## Author
+
+* **Karol Zyskowski**
+
+Questions? Send an email to: k.zysk@zoho.com
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This is a project of the Udacity Front-End Web Dev Nanodegree.Therefore, I will most likely not accept pull requests.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgements
+
+* https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001
