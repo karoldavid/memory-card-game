@@ -154,9 +154,7 @@ function openCard(clickedCard) {
             if (firstCard === secondCard) {
                 lockCards();
             } else {
-                setTimeout(function() {
-                    hideCards();
-                }, 500);
+                setTimeout(hideCards, 500);
             }
             incrementMoveCounter();
             removeStar();
