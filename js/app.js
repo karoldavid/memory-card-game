@@ -6,7 +6,7 @@ let openCards = [];
 let moveCounter = 0;
 let time = 0;
 let matchedCards = 0;
-let timerGo = true;
+let timerGo;
 
 let cards = [
     "fa-diamond",
@@ -113,7 +113,6 @@ function resetStars() {
 
 function resetTimer() {
     $(".timer").text("00");
-    timerGo = true;
     startTimer();
 }
 
@@ -128,14 +127,13 @@ function startTimer() {
         }
         old = seconds;
         if (time > 99) showModal("Time Out!");
-        if (timerGo) setTimeout(getNow, 500);
     }
-    getNow();
+    timerGo = setInterval(getNow, 500);
 }
 
 function showModal(label) {
     const starRating = 3 - $(".stars .star-rm-color").length;
-    timerGo = false;
+    clearInterval(timerGo);
     $("#modalLabel").text(label);
     $("#time").text(time + " /100");
     $("#star-rating").text(starRating);
